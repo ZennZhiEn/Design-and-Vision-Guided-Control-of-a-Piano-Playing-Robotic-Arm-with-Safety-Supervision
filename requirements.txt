@@ -1,0 +1,30 @@
+# ──────────────────────────────────────────────────────────────
+# requirements.txt
+# Piano-Playing Robotic Arm — Python dependencies
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Tested on Python 3.11 (Windows 11 / Ubuntu 24.04)
+# ──────────────────────────────────────────────────────────────
+
+# Computer vision and image processing
+opencv-python>=4.8
+
+# Numerical computing
+numpy>=1.26
+
+# Robotics Toolbox (IK solver, ETS model, trajectory generation)
+roboticstoolbox-python>=1.1
+
+# Spatial maths (SE3 transforms, used by Robotics Toolbox)
+spatialmath-python>=1.1
+
+# Serial communication with Arduino
+pyserial>=3.5
+
+# Plotting and simulation visualisation
+matplotlib>=3.8
+
+# ArUco marker PDF generation (arucomarker.py only)
+reportlab>=4.0

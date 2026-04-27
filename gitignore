@@ -1,0 +1,48 @@
+# ──────────────────────────────────────────────────────────────
+# .gitignore — Piano-Playing Robotic Arm
+# ──────────────────────────────────────────────────────────────
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Generated log and data files (re-created by the application at runtime)
+ina219_raw_log.txt
+press_validation_log.csv
+session_summary_log.csv
+key_session_log.csv
+tune_session_state.json
+
+# Keep key_target_offsets.json — it stores calibration data worth preserving
+# Uncomment the line below if you want to exclude it instead:
+# key_target_offsets.json
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arduino build output
+build/
+*.elf
+*.hex
+*.map
+
+# Matplotlib figure exports (if saved locally)
+*.png
+!aruco_40mm/*.png    # keep the ArUco marker images
+!unified_controller_sim.png   # keep the simulation figure used in the report
