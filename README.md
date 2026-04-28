@@ -21,7 +21,6 @@ visual alignment before each key press.
 - [Operator Controls](#operator-controls)
 - [Adding Songs](#adding-songs)
 - [Development and Simulation Scripts](#development-and-simulation-scripts)
-- [Project Report](#project-report)
 
 ---
 
