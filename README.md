@@ -1,7 +1,4 @@
-# Design and Vision-Guided Control of a Piano-Playing Robotic Arm
-
-**MEng Final Year Project — University of Southampton, ECS**  
-**Author:** Zhi En Tee | **Supervisor:** Dr. Bing Chu
+# Design and Vision-Guided Control of a Piano-Playing Robotic Arm with Safety Supervision
 
 A vision-guided robotic piano-playing system built on a low-cost robotic arm,
 camera-based workspace localisation, and safety-supervised note execution.
@@ -9,14 +6,6 @@ The system uses ArUco markers to establish a shared reference frame, homography
 to map between image space and the keyboard plane, and a hybrid two-stage
 control framework that combines open-loop Cartesian motion with closed-loop
 visual alignment before each key press.
-
----
-
-## Demo
-
-> The system playing *Hot Cross Buns* at 35 BPM.
-
-![System overview](aruco_40mm/aruco_10.png)
 
 ---
 
@@ -51,13 +40,10 @@ visual alignment before each key press.
 
 ## Hardware
 
-| Item | Detail | Cost (approx.) |
-|---|---|---|
-| Adeept 5-DOF Robotic Arm Kit | Arduino Uno, 5× hobby servos | £45.77 |
-| 22-key toy piano/keyboard | Any small keyboard with regular white-key spacing | £15.99 |
-| Smartphone + tripod | Overhead camera via DroidCam | £14.05 |
-| INA219 current sensor module | I2C, replaces the kit OLED | £3.99 |
-| **Total** | | **£79.80** |
+- Adeept 5-DOF Robotic Arm Kit
+- 22-key toy piano/keyboard
+- Smartphone + tripod
+- INA219 current sensor module
 
 The INA219 replaces the OLED display on the Adeept kit. It connects to the Arduino I2C bus (SDA/SCL) and shares the same serial link used for motion commands.
 
@@ -78,8 +64,8 @@ The INA219 replaces the OLED display on the Adeept kit. It connects to the Ardui
 ├── pidsim.py                        # Simulation: unified controller variants
 ├── arucomarker.py                   # Generates ArUco marker PDFs (run once)
 │
-├── tracgen.py                       # [Dev] Open-loop IK prototype (Section 5.2)
-├── pidsim_1.py                      # [Dev] P/PI/PD/PID comparison (Section 5.4.3)
+├── tracgen.py                       # [Dev] Open-loop IK prototype
+├── pidsim_1.py                      # [Dev] P/PI/PD/PID comparison
 ├── tracgen.ino                      # Arduino firmware (serial servo + INA219)
 │
 ├── songs/
@@ -104,8 +90,8 @@ The INA219 replaces the OLED display on the Adeept kit. It connects to the Ardui
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ZennZhiEn/Design-and-Control-of-a-Piano-Playing-Robotic-Hand.git
-cd Design-and-Control-of-a-Piano-Playing-Robotic-Hand
+git clone https://github.com/ZennZhiEn/Design-and-Vision-Guided-Control-of-a-Piano-Playing-Robotic-Arm-with-Safety-Supervision.git
+cd Design-and-Vision-Guided-Control-of-a-Piano-Playing-Robotic-Arm-with-Safety-Supervision
 ```
 
 ### 2. Install Python dependencies
@@ -311,8 +297,7 @@ reproducibility. They are not part of the main application.
 
 The first working motion script, written before the full `PianoArmController`
 class existed. Implements the ETS kinematic chain, IK solving, trajectory
-generation, servo mapping, and serial streaming directly. The FK visualisation
-plots in the report (Figures 19–20) were produced here.
+generation, servo mapping, and serial streaming directly.
 
 ```bash
 python tracgen.py
@@ -325,7 +310,7 @@ python tracgen.py
 ### `pidsim_1.py` — P/PI/PD/PID Alignment Comparison
 
 Standalone simulation used to justify the choice of proportional-only control
-for Stage 2 visual alignment (Section 5.4.3, Figure 22). No hardware required.
+for Stage 2 visual alignment. No hardware required.
 
 ```bash
 python pidsim_1.py
@@ -334,29 +319,8 @@ python pidsim_1.py
 ### `pidsim.py` — Unified Sensor-Gated Controller Simulation
 
 Extended simulation comparing fixed-P vs gain-scheduled alignment with and
-without a blind approach phase (Sections 5.4.4, Figures 23–24). No hardware required.
+without a blind approach phase. No hardware required.
 
 ```bash
 python pidsim.py
 ```
-
----
-
-## Project Report
-
-The full project report is available in the repository. It covers the
-theoretical background, system design, implementation details, testing
-methodology, and experimental results in detail.
-
-**Key sections:**
-- Chapter 4: Computer Vision and Workspace Localisation
-- Chapter 5: Motor Control and Key Actuation (hybrid framework, visual alignment, press profiles)
-- Chapter 6: Testing, Evaluation, and Results (single-key accuracy, white-key sweep, timing model, full-song playback)
-- Appendix E: Full software structure documentation
-
----
-
-## Acknowledgements
-
-Supervisor: **Dr. Bing Chu**, University of Southampton  
-Second Examiner: **Dr. Igor Golosnoy**, University of Southampton
